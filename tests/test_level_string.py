@@ -2,7 +2,7 @@
 
 import pytest
 
-from gmd_api import InnerLevelString, LevelObject, ColorChannel
+from gmd_api import ColorChannel, InnerLevelString, LevelObject
 
 
 class TestInnerLevelString:
@@ -54,8 +54,10 @@ class TestInnerLevelString:
         compressed_string = inner.to_string()
         assert compressed_string is not None
         # Should be base64 encoded
-        assert all(c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_="
-                   for c in compressed_string)
+        assert all(
+            c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_="
+            for c in compressed_string
+        )
 
     def test_to_string_with_objects(self):
         """Test converting to string with objects."""

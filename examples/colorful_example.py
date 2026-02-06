@@ -1,6 +1,6 @@
 """Example showing color customization with gmd_api."""
 
-from gmd_api import Level, LevelObject, ColorChannel
+from gmd_api import ColorChannel, Level, LevelObject
 
 # Create a new level
 level = Level(name="Colorful Example", description="A level with custom colors")
@@ -25,11 +25,7 @@ level.add_object(obj3)
 
 # Create objects with HSV overrides
 for i in range(10):
-    obj = (
-        LevelObject(211)
-        .move_to(100 + i * 50, 200)
-        .set_detail_hsv(-180 + i * 36, 1.0, 1.0)
-    )
+    obj = LevelObject(211).move_to(100 + i * 50, 200).set_detail_hsv(-180 + i * 36, 1.0, 1.0)
     level.add_object(obj)
 
 # Save the level

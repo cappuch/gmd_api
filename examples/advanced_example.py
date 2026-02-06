@@ -1,12 +1,9 @@
 """Example showing advanced level features with gmd_api."""
 
-from gmd_api import Level, LevelObject, ColorChannel
+from gmd_api import ColorChannel, Level, LevelObject
 
 # Create a new level
-level = Level(
-    name="~* Advanced Example Level *~",
-    description="Demonstrating advanced features"
-)
+level = Level(name="~* Advanced Example Level *~", description="Demonstrating advanced features")
 
 # Create a grid of blocks with different properties
 for x in range(20):
@@ -21,19 +18,11 @@ for x in range(20):
         level.add_object(obj)
 
 # Add objects to groups for triggers
-grouped_obj = (
-    LevelObject(211)
-    .move_to(500, 500)
-    .set_groups([1, 2, 3])
-)
+grouped_obj = LevelObject(211).move_to(500, 500).set_groups([1, 2, 3])
 level.add_object(grouped_obj)
 
 # Configure level settings
-level.inner() \
-    .set_platformer(True) \
-    .set_background_id(12) \
-    .set_middleground_id(2) \
-    .set_ground_id(3)
+level.inner().set_platformer(True).set_background_id(12).set_middleground_id(2).set_ground_id(3)
 
 # Set level metadata
 level.set_official_song_id(22).set_time_spent(123456)

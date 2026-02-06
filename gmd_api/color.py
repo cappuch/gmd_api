@@ -50,7 +50,7 @@ class ColorChannel:
         self.set(8, 1)
         self.set(15, 1)
         self.set(18, 1)
-    
+
     def set(self, key: int, value: any) -> Self:
         """Set a color channel property.
 
@@ -75,10 +75,8 @@ class ColorChannel:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self.set(RED, r) \
-            .set(GREEN, g) \
-            .set(BLUE, b)
-    
+        return self.set(RED, r).set(GREEN, g).set(BLUE, b)
+
     def set_opacity(self, opacity: float) -> Self:
         """Set the opacity/alpha value.
 
@@ -89,7 +87,7 @@ class ColorChannel:
             Self: Returns self for method chaining.
         """
         return self.set(OPACITY, opacity)
-    
+
     def set_rgba(self, r: int, g: int, b: int, a: float) -> Self:
         """Set the RGBA color values.
 
@@ -103,7 +101,7 @@ class ColorChannel:
             Self: Returns self for method chaining.
         """
         return self.set_rgb(r, g, b).set_opacity(a)
-    
+
     def to_string(self) -> str:
         """Convert the color channel to its string representation.
 
@@ -127,7 +125,6 @@ def get_default_colors() -> list[ColorChannel]:
         ColorChannel(CHANNEL_MG1).set_rgb(0, 0, 0),
         ColorChannel(CHANNEL_MG2).set_rgb(0, 0, 0),
         ColorChannel(CHANNEL_OBJ).set_rgb(200, 200, 200),
-
         ColorChannel(CHANNEL_P1).set_rgb(255, 255, 255),
         ColorChannel(CHANNEL_P2).set_rgb(255, 255, 255),
     ]

@@ -35,8 +35,8 @@ class LevelObject:
         """
         self.properties: dict[int, any] = {}
         self.properties[ID] = id
-        self.properties[155] = 1 # ???
-    
+        self.properties[155] = 1  # ???
+
     def get(self, key: int) -> any:
         """Get a property value by key.
 
@@ -60,7 +60,7 @@ class LevelObject:
         """
         self.properties[key] = value
         return self
-    
+
     def move_to(self, x: float, y: float) -> Self:
         """Move the object to a specific position.
 
@@ -71,9 +71,7 @@ class LevelObject:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self \
-            .set(POS_X, x) \
-            .set(POS_Y, y)
+        return self.set(POS_X, x).set(POS_Y, y)
 
     def rotate_to(self, degrees: float) -> Self:
         """Set the rotation angle of the object.
@@ -96,9 +94,7 @@ class LevelObject:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self \
-            .set(SCALE_X, x) \
-            .set(SCALE_Y, y)
+        return self.set(SCALE_X, x).set(SCALE_Y, y)
 
     def set_base_color(self, channel_id: int) -> Self:
         """Set the base color channel for the object.
@@ -110,7 +106,7 @@ class LevelObject:
             Self: Returns self for method chaining.
         """
         return self.set(COLOR_CHANNEL_BASE, channel_id)
-    
+
     def set_detail_color(self, channel_id: int) -> Self:
         """Set the detail color channel for the object.
 
@@ -132,9 +128,8 @@ class LevelObject:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self.set_base_color(base_id) \
-            .set_detail_color(detail_id)
-    
+        return self.set_base_color(base_id).set_detail_color(detail_id)
+
     def set_base_hsv(self, h: int, s: float, v: float) -> Self:
         """Set the HSV color override for the base color.
 
@@ -146,9 +141,8 @@ class LevelObject:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self.set(HSV_BASE_ENABLED, 1) \
-            .set(HSV_BASE, make_hsv_string(h, s, v))
-    
+        return self.set(HSV_BASE_ENABLED, 1).set(HSV_BASE, make_hsv_string(h, s, v))
+
     def disable_base_hsv(self) -> Self:
         """Disable the HSV color override for the base color.
 
@@ -168,9 +162,8 @@ class LevelObject:
         Returns:
             Self: Returns self for method chaining.
         """
-        return self.set(HSV_DETAIL_ENABLED, 1) \
-            .set(HSV_DETAIL, make_hsv_string(h, s, v))
-    
+        return self.set(HSV_DETAIL_ENABLED, 1).set(HSV_DETAIL, make_hsv_string(h, s, v))
+
     def disable_detail_hsv(self) -> Self:
         """Disable the HSV color override for the detail color.
 

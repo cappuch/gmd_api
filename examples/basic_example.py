@@ -1,6 +1,6 @@
 """Basic example of creating a simple level with gmd_api."""
 
-from gmd_api import Level, LevelObject, ColorChannel
+from gmd_api import ColorChannel, Level, LevelObject
 
 # Create a new level
 level = Level(name="Basic Example", description="A simple level created with gmd_api")

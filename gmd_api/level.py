@@ -49,7 +49,7 @@ class Level:
         self.set(LEVEL_TYPE, LEVEL_TYPE_LOCAL)
         self.set(BINARY_VERSION, 40)
         self.set(KCEK, 4)
-    
+
     def set(self, key: str, value: any) -> Self:
         """Set a level property by key.
 
@@ -62,7 +62,7 @@ class Level:
         """
         self.properties[key] = value
         return self
-    
+
     def set_time_spent(self, seconds: int) -> Self:
         """Set the time spent editing the level.
 
@@ -73,7 +73,7 @@ class Level:
             Self: Returns self for method chaining.
         """
         return self.set(SECS_SPENT_EDITING, seconds)
-    
+
     def set_official_song_id(self, id: int) -> Self:
         """Set the official song ID for the level.
 
@@ -84,7 +84,7 @@ class Level:
             Self: Returns self for method chaining.
         """
         return self.set(OFFICIAL_SONG_ID, id)
-    
+
     def set_custom_song_id(self, id: int) -> Self:
         """Set the custom song ID for the level.
 
@@ -95,7 +95,7 @@ class Level:
             Self: Returns self for method chaining.
         """
         return self.set(CUSTOM_SONG_ID, id)
-    
+
     def set_name(self, name: str) -> Self:
         """Set the level name.
 
@@ -133,7 +133,7 @@ class Level:
         """
         self.inner_string.objects.append(obj)
         return self
-    
+
     def add_color_channel(self, channel: ColorChannel) -> Self:
         """Add a color channel to the level.
 
@@ -145,7 +145,7 @@ class Level:
         """
         self.inner_string.color_channels.append(channel)
         return self
-    
+
     def inner(self) -> InnerLevelString:
         """Get the inner level string containing objects and settings.
 
@@ -161,7 +161,8 @@ class Level:
             str: The level data in GMD XML format.
         """
         props = "".join(
-            f"<k>{k}</k><{get_type_tag(v)}>{v}</{get_type_tag(v)}>" for k, v in self.properties.items()
+            f"<k>{k}</k><{get_type_tag(v)}>{v}</{get_type_tag(v)}>"
+            for k, v in self.properties.items()
         )
 
         string: str = f"""<?xml version="1.0"?>
@@ -171,10 +172,8 @@ class Level:
         {props}
     </dict>
 </plist>"""
-        return string \
-            .replace("\n", "") \
-            .replace("\t", "")
-    
+        return string.replace("\n", "").replace("\t", "")
+
     def save(self, to_file: str) -> None:
         """Save the level to a GMD file.
 
@@ -197,7 +196,7 @@ class Level:
         with open(from_file, "r") as f:
             content = f.read()
         return cls.from_string(content)
-    
+
     @classmethod
     def from_string(cls, gmd_string: str) -> Self:
         """Parse a level from a GMD format string.
@@ -213,10 +212,10 @@ class Level:
         """
         level = cls()
         level.properties.clear()  # clear default properties
-        
+
         # parse XML
         root = ET.fromstring(gmd_string)
-        
+
         # find the dict element
         dict_elem = root.find("dict")
         if dict_elem is None:
@@ -229,10 +228,10 @@ class Level:
             if children[i].tag == "k":
                 key = children[i].text
                 i += 1
-                
+
                 if i >= len(children):
                     break
-                
+
                 value_elem = children[i]
                 value = parse_value(value_elem)
 
@@ -242,11 +241,11 @@ class Level:
                         level.inner_string = InnerLevelString.from_string(value)
                 else:
                     level.properties[key] = value
-                
+
                 i += 1
             else:
                 i += 1
-        
+
         return level
 
 

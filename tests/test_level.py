@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from gmd_api import Level, LevelObject, ColorChannel
+from gmd_api import ColorChannel, Level, LevelObject
 
 
 class TestLevel:
