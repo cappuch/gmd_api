@@ -4,7 +4,7 @@ This module provides the ColorChannel class for defining custom colors in levels
 and utility functions for working with colors.
 """
 
-from typing import Self
+from typing import Any, Self
 
 from .keys.color_channels import *
 from .keys.colors import *
@@ -32,7 +32,7 @@ class ColorChannel:
             id: The color channel ID. Use constants from gmd_api.keys.color_channels
                 for standard channels (CHANNEL_BG, CHANNEL_G1, etc.).
         """
-        self.properties: dict[int, any] = {}
+        self.properties: dict[int, Any] = {}
 
         self.set(ID, id)
         self.set(RED, 0)
@@ -51,7 +51,7 @@ class ColorChannel:
         self.set(15, 1)
         self.set(18, 1)
 
-    def set(self, key: int, value: any) -> Self:
+    def set(self, key: int, value: Any) -> Self:
         """Set a color channel property.
 
         Args:

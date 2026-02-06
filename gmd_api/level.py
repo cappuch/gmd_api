@@ -6,7 +6,7 @@ with all its properties, objects, and color channels.
 
 import base64
 import xml.etree.ElementTree as ET
-from typing import Self
+from typing import Any, Self
 
 from .color import ColorChannel
 from .keys.level import *
@@ -41,7 +41,7 @@ class Level:
             description: The description of the level. Defaults to empty string.
         """
         self.inner_string: InnerLevelString = InnerLevelString()
-        self.properties: dict[str, any] = {}
+        self.properties: dict[str, Any] = {}
 
         self.set_name(name)
         self.set_description(description)
@@ -50,7 +50,7 @@ class Level:
         self.set(BINARY_VERSION, 40)
         self.set(KCEK, 4)
 
-    def set(self, key: str, value: any) -> Self:
+    def set(self, key: str, value: Any) -> Self:
         """Set a level property by key.
 
         Args:
@@ -249,7 +249,7 @@ class Level:
         return level
 
 
-def parse_value(elem: ET.Element) -> any:
+def parse_value(elem: ET.Element) -> Any:
     """Parse a value from an XML element based on its tag type.
 
     Args:
@@ -286,7 +286,7 @@ def parse_value(elem: ET.Element) -> any:
         return elem.text if elem.text else ""
 
 
-def get_type_tag(value: any) -> str:
+def get_type_tag(value: Any) -> str:
     """Get the XML tag type for a Python value.
 
     Args:

@@ -6,7 +6,7 @@ and compressed level data containing objects, color channels, and settings.
 
 import gzip
 from base64 import urlsafe_b64decode, urlsafe_b64encode
-from typing import Self
+from typing import Any, Self
 
 from .color import ColorChannel, get_default_colors
 from .keys.inner_level_string import *
@@ -35,9 +35,9 @@ class InnerLevelString:
         """Initialize a new inner level string with default values."""
         self.objects: list[LevelObject] = []
         self.color_channels: list[ColorChannel] = get_default_colors()
-        self.properties: dict[str, any] = {}
+        self.properties: dict[str, Any] = {}
 
-    def set(self, key: str, value: any) -> Self:
+    def set(self, key: str, value: Any) -> Self:
         """Set a property value.
 
         Args:

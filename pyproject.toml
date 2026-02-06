@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "gmd_api"
-version = "0.1.2"
+dynamic = ["version"]
 description = "GDShare-based API to create Geometry Dash Levels"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -33,6 +33,9 @@ Issues = "https://github.com/veprogames/gmd_api/issues"
 
 [tool.setuptools]
 packages = ["gmd_api", "gmd_api.keys"]
+
+[tool.setuptools.dynamic]
+version = {attr = "gmd_api.__version__"}
 
 [tool.black]
 line-length = 100

@@ -4,7 +4,7 @@ This module provides the LevelObject class which represents individual objects
 in a Geometry Dash level with all their properties like position, rotation, colors, etc.
 """
 
-from typing import Iterable, Self
+from typing import Any, Iterable, Self
 
 from .color import make_hsv_string
 from .keys.objects import *
@@ -33,11 +33,11 @@ class LevelObject:
             id: The object ID. Different IDs represent different object types
                 (blocks, spikes, portals, triggers, etc.).
         """
-        self.properties: dict[int, any] = {}
+        self.properties: dict[int, Any] = {}
         self.properties[ID] = id
         self.properties[155] = 1  # ???
 
-    def get(self, key: int) -> any:
+    def get(self, key: int) -> Any:
         """Get a property value by key.
 
         Args:
@@ -48,7 +48,7 @@ class LevelObject:
         """
         return self.properties[key] if key in self.properties else None
 
-    def set(self, key: int, value: any) -> Self:
+    def set(self, key: int, value: Any) -> Self:
         """Set a property value by key.
 
         Args:
