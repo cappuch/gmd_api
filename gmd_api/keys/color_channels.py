@@ -1,3 +1,9 @@
+"""Constants for color channel IDs in the GMD format.
+
+This module defines the standard color channel IDs used in Geometry Dash levels.
+"""
+
+# Standard color channels
 CHANNEL_BG = 1000
 
 CHANNEL_G1 = 1001

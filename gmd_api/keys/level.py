@@ -1,3 +1,9 @@
+"""Constants for level properties in the GMD format.
+
+This module defines all the key constants used for level metadata properties
+such as name, description, song ID, difficulty, and other level settings.
+"""
+
 KCEK = "kCEK"
 
 LEVEL_NAME = "k2"

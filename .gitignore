@@ -1,2 +1,50 @@
+# Python cache and build files
 __pycache__
 *.egg-info
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Example output files
+*.gmd
+examples/*.gmd
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,3 +1,10 @@
+"""Constants for object properties in the GMD format.
+
+This module defines all the property key constants used for level objects,
+including position, rotation, colors, triggers, and other object properties.
+"""
+
+# Basic object properties
 ID = 1
 POS_X = 2
 POS_Y = 3

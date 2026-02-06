@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gmd_api"
+dynamic = ["version"]
+description = "GDShare-based API to create Geometry Dash Levels"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "veprogames", email = "75524847+veprogames@users.noreply.github.com"}
+]
+keywords = ["geometry-dash", "gd", "level", "api", "gdshare"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/veprogames/gmd_api"
+Repository = "https://github.com/veprogames/gmd_api"
+Issues = "https://github.com/veprogames/gmd_api/issues"
+
+[tool.setuptools]
+packages = ["gmd_api", "gmd_api.keys"]
+
+[tool.setuptools.dynamic]
+version = {attr = "gmd_api.__version__"}
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+follow_imports = "normal"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["gmd_api"]
+omit = ["*/tests/*", "*/test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
