@@ -1,3 +1,9 @@
+"""Constants for inner level string properties in the GMD format.
+
+This module defines the property keys used for level settings like game mode,
+speed, backgrounds, and other level-specific configurations.
+"""
+
 GAMEMODE = "kA2"
 IS_MINI = "kA3"
 SPEED = "kA4"
